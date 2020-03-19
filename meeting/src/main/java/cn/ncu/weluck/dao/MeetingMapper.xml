@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ncu.weluck.dao.MeetingMapper">
+    <insert id="addMeeting" parameterType="Meeting">
+        insert into meeting.meet(meetDate, meetAddress, meetPerson, meetHotel, meetId, ifIfRoom, ifName, ifWorkPlace, ifId, ifPhone, ifDate, ifSex, userAccount)
+        VALUES(#{meetDate}, #{meetAddress}, #{meetPerson}, #{meetHotel}, #{meetId}, #{ifIfRoom}, #{ifName}, #{ifWorkPlace}, #{ifId}, #{ifPhone}, #{ifDate}, #{ifSex}, #{userAccount});
+    </insert>
+
+    <delete id="deleteMeeting" parameterType="java.lang.String">
+        delete from meeting.meet
+        where #{meetId} = meetId
+    </delete>
+
+    <select id="queryAllMeet" resultType="Meeting">
+        select * from meeting.meet
+    </select>
+
+    <select id="queryMeetByUser" parameterType="java.lang.String" resultType="Meeting">
+        select * from meeting.meet where userAccount = #{userAccount}
+    </select>
+
+    <select id="queryIdByAccount" parameterType="java.lang.String" resultType="java.lang.String">
+        select meetId from meeting.meet
+        where userAccount = #{userAccount}
+    </select>
+</mapper>

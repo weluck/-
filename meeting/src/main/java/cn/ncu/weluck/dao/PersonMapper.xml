@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ncu.weluck.dao.PersonMapper">
+    <insert id="addHost" parameterType="Person">
+        insert into meeting.host (account, psw)
+        values (#{account}, #{psw});
+    </insert>
+
+    <delete id="deleteHost" parameterType="java.lang.String">
+        delete from meeting.host where account = #{account}
+    </delete>
+
+    <insert id="addAttendent" parameterType="Person">
+        insert into meeting.attendent (account, psw)
+        values (#{account}, #{psw});
+    </insert>
+
+    <delete id="deleteAttendent" parameterType="java.lang.String">
+        delete from meeting.attendent where account = #{account}
+    </delete>
+
+    <insert id="addManager" parameterType="Person">
+        insert into meeting.manager (account, psw)
+        values (#{account}, #{psw});
+    </insert>
+
+    <delete id="deleteManager" parameterType="java.lang.String">
+        delete from meeting.manager where account = #{account}
+    </delete>
+
+    <select id="queryHost" resultType="Person" parameterType="java.lang.String">
+        select * from meeting.host where account = #{account}
+    </select>
+
+    <select id="queryAttendent" resultType="Person" parameterType="java.lang.String">
+        select * from meeting.attendent where account = #{account}
+    </select>
+
+    <select id="queryManager" resultType="Person" parameterType="java.lang.String">
+        select * from meeting.manager where account = #{account}
+    </select>
+
+    <select id="queryAllHost" resultType="Person">
+        select * from meeting.host
+    </select>
+
+    <select id="queryAllAttendent" resultType="Person">
+        select * from meeting.attendent
+    </select>
+</mapper>

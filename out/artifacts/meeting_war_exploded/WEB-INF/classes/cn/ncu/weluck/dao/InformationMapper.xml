@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ncu.weluck.dao.InformationMapper">
+    <insert id="addInfor" parameterType="Information">
+        insert into meeting.information(name, workPlace, id, phone, date, sex, meetId, ifRoom)
+        VALUES(#{name}, #{workPlace}, #{id}, #{phone}, #{date}, #{sex}, #{meetId}, #{ifRoom})
+    </insert>
+    
+    <delete id="deleteInfor" parameterType="java.lang.String">
+        delete from meeting.information
+        where meetId = #{meetId}
+    </delete>
+
+    <select id="queryByMeet" parameterType="java.lang.String" resultType="Information">
+        select * from meeting.information
+        where meetId = #{meetId}
+    </select>
+</mapper>
